@@ -17,6 +17,7 @@ export default function Home() {
 
   return (
     <>
+      <h1 style={{ textAlign: "center" }}>Users List</h1>
       <div style={{ margin: "10rem" }}>
         <Table striped bordered hover size="sm">
           <thead>
@@ -34,7 +35,11 @@ export default function Home() {
                       <td>{el.name}</td>
                       <td>{el.email}</td>
                       <td>
-                        <Button onClick={() => handleEdit(el.id)}>Ubah</Button>
+                        <Link to={"/edit"}>
+                          <Button onClick={() => handleEdit(el.id)}>
+                            Ubah
+                          </Button>
+                        </Link>
                         &nbsp;
                         <Button onClick={() => handleDelete(el.id)}>
                           Hapus
@@ -46,6 +51,10 @@ export default function Home() {
               : "Tidak ada data user"}
           </tbody>
         </Table>
+        <br />
+        <Link className="d-grid gap-2" to="/create">
+          <Button size="lg">Buat User</Button>
+        </Link>
       </div>
     </>
   );
